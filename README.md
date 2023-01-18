@@ -2,7 +2,8 @@
 tCt(tclb Classroom todo)をVue.jsのSPAとして実装しようとしています
 [技術科部](https://tclb.cf)でのプロジェクトです。
 ## 仕組み
-
+[phpを使ってデータベースと連携したweb api](https://github.com/yosshipaopao/tCt-beta)と連携しています。
+apiの認証は`firebase/auth`です。
 ## Customize configuration
 
 See [Vite Configuration Reference](https://vitejs.dev/config/).
