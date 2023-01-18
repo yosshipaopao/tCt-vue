@@ -8,6 +8,7 @@ apiの認証は`firebase/auth`です。
 - Vue
 - Vite
 - pinia
+- firebase
 ## Project Setup
 
 ```sh
