@@ -1,10 +1,7 @@
 # tCt-vue
-
-This template should help get you started developing with Vue 3 in Vite.
-
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+tCt(tclb Classroom todo)をVue.jsのSPAとして実装しようとしています
+[技術科部](https://tclb.cf)でのプロジェクトです。
+## 仕組み
 
 ## Customize configuration
 
