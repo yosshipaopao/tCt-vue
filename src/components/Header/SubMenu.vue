@@ -7,18 +7,32 @@ const HeaderStore = useHeaderSotre();
 const {subMenu} = storeToRefs(HeaderStore);
 </script>
 <template>
-    <transition>
-    <div v-show="subMenu" class="bgsubMenu" @click="HeaderStore.view_submenu(false)"></div>
+    <transition name="bg">
+        <div v-show="subMenu" class="bgsubMenu" @click="HeaderStore.view_submenu(false)"></div>
     </transition>
-    <div v-show="subMenu" class="subMenu"></div>
+    <transition name="menu">
+        <div v-show="subMenu" class="subMenu"></div>
+    </transition>
 </template>
-<style scoped>
+<style scoped lang="scss">
+.bg-enter-active,.bg-leave-active {
+    transition: opacity 0.5s ease;
+}
+.bg-enter-from,.bg-leave-to {
+    opacity: 0;
+}
+.menu-enter-active,.menu-leave-active {
+    transition: transform 0.5s ease;
+}
+.menu-enter-from,.menu-leave-to {
+    transform: translateX(-200px);
+}
 .subMenu{
     position: fixed;
     top: 0;
     bottom: 0;
     width: 200px;
-    left: 0;
+    left: 0px;
     background-color: aqua;
     z-index: 1002;
 }
