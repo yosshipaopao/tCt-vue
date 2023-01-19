@@ -1,16 +1,13 @@
 <script setup>
 import { ref } from 'vue'
+import {useUsersSotre} from '@/stores/user'
+const { name,email,token,addUser }= useUsersSotre();
 import { firebaseApp } from '@/plugins/firebase';
 import { getAuth, signInWithPopup, signOut, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
 const auth = getAuth(firebaseApp);
 const provider = new GoogleAuthProvider();
 let button_disable = ref(false);
 let msg = ref("login")
-let userdata = ref({
-    name: null,
-    email: null,
-    token: null
-});
 
 const test = () => { console.log(msg.value); msg.value = "t" }
 const toggleSignIn = () => {
@@ -18,15 +15,10 @@ const toggleSignIn = () => {
         signInWithPopup(auth, provider).then(function (res) {
 
             msg = "SignOut";
-            const credential = GoogleAuthProvider.credentialFromResult(res);
-            const token = credential.accessToken;
-            const user = res.user;
-            userdata.value = {
-                name: user.displayName,
-                email: user.email,
-                token: token
-            }
-            console.log(user);
+            //const credential = GoogleAuthProvider.credentialFromResult(res);
+            //const token = credential.accessToken;
+            //const user = res.user;
+            //console.log(user);
         }).catch(function (error) {
             // Handle Errors here.
             var errorCode = error.code;
@@ -50,13 +42,20 @@ const toggleSignIn = () => {
 onAuthStateChanged(auth, user => {
     if (user) {
         console.log(user);
-        userdata.value = {
+        addUser({
+            islogined:true,
             name: user.displayName,
             email: user.email,
             token: user.accessToken
-        }
+        });
         msg.value = "logout";
     } else {
+        addUser({
+            islogined:false,
+            name: null,
+            email: null,
+            token: null
+        });
         msg.value = "login";
     }
     button_disable.value = false;
@@ -67,7 +66,7 @@ onAuthStateChanged(auth, user => {
         <h2>Sign in</h2>
         <button :disabled="button_disable" @click="toggleSignIn">{{ msg }}</button>
         <button @click="test">test</button>
-        <p>user:{{ userdata.name }}<br>email:{{ userdata.email }}<br></p>
+        <p>user:{{ name }}<br>email:{{ email }}<br></p>
     </div>
 </template>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
