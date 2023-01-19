@@ -2,10 +2,10 @@
 import { ref } from 'vue'
 import {storeToRefs} from 'pinia'
 import {useUsersSotre} from '@/stores/user'
-const Userstore = useUsersSotre();
-const { name,email,token }= storeToRefs(Userstore);
 import { firebaseApp } from '@/plugins/firebase';
 import { getAuth, signInWithPopup, signOut, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
+const Userstore = useUsersSotre();
+const { name,email,token }= storeToRefs(Userstore);
 const auth = getAuth(firebaseApp);
 const provider = new GoogleAuthProvider();
 let button_disable = ref(false);
