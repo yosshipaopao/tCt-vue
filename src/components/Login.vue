@@ -1,7 +1,9 @@
 <script setup>
 import { ref } from 'vue'
+import {storeToRefs} from 'pinia'
 import {useUsersSotre} from '@/stores/user'
-const { name,email,token,addUser }= useUsersSotre();
+const Userstore = useUsersSotre();
+const { name,email,token }= storeToRefs(Userstore);
 import { firebaseApp } from '@/plugins/firebase';
 import { getAuth, signInWithPopup, signOut, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
 const auth = getAuth(firebaseApp);
@@ -9,11 +11,9 @@ const provider = new GoogleAuthProvider();
 let button_disable = ref(false);
 let msg = ref("login")
 
-const test = () => { console.log(msg.value); msg.value = "t" }
 const toggleSignIn = () => {
     if (!auth.currentUser) {
         signInWithPopup(auth, provider).then(function (res) {
-
             msg = "SignOut";
             //const credential = GoogleAuthProvider.credentialFromResult(res);
             //const token = credential.accessToken;
@@ -42,7 +42,7 @@ const toggleSignIn = () => {
 onAuthStateChanged(auth, user => {
     if (user) {
         console.log(user);
-        addUser({
+        Userstore.addUser({
             islogined:true,
             name: user.displayName,
             email: user.email,
@@ -50,11 +50,8 @@ onAuthStateChanged(auth, user => {
         });
         msg.value = "logout";
     } else {
-        addUser({
+        Userstore.addUser({
             islogined:false,
-            name: null,
-            email: null,
-            token: null
         });
         msg.value = "login";
     }
@@ -65,42 +62,8 @@ onAuthStateChanged(auth, user => {
     <div class="signin">
         <h2>Sign in</h2>
         <button :disabled="button_disable" @click="toggleSignIn">{{ msg }}</button>
-        <button @click="test">test</button>
         <p>user:{{ name }}<br>email:{{ email }}<br></p>
     </div>
 </template>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1,
-h2 {
-    font-weight: normal;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    display: inline-block;
-    margin: 0 10px;
-}
-
-a {
-    color: #42b983;
-}
-
-.signin {
-    margin-top: 20px;
-
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center
-}
-
-input {
-    margin: 10px 0;
-    padding: 10px;
-}
 </style>
