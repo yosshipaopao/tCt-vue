@@ -24,7 +24,7 @@ const HeaderStore = useHeaderSotre();
     header{
         position: fixed;
         top: 0;
-        bottom: 90vh;
+        bottom: calc(100vh - var(--header-high));
         left: 0;
         right: 0;
         display: flex;

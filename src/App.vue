@@ -11,6 +11,6 @@ import Header from '@/views/Header.vue'
 
 <style scoped>
 .headerspace{
-  height: 10vh;
+  height: var(--header-high);
 }
 </style>
