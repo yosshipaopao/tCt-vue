@@ -16,6 +16,9 @@ const Links=[
     },{
         path:"/user",
         name:"User"
+    },{
+        path:"/login",
+        name:"login"
     }
 ]
 </script>
@@ -33,18 +36,6 @@ const Links=[
 </template>
 <style scoped lang="scss">
 @import '@/assets/mixin.scss';
-.bg-enter-active,.bg-leave-active {
-    transition: opacity 0.5s ease;
-}
-.bg-enter-from,.bg-leave-to {
-    opacity: 0;
-}
-.menu-enter-active,.menu-leave-active {
-    transition: transform 0.5s ease;
-}
-.menu-enter-from,.menu-leave-to {
-    transform: translateX(-200px);
-}
 .subMenu{
     position: fixed;
     top: 0;
@@ -54,6 +45,7 @@ const Links=[
     background-color: aqua;
     z-index: 1002;
     padding-top:200px;
+    box-shadow: 0 0 50px #000f;
     .Links{
         width: 100%;
         height: 100%;
@@ -75,5 +67,18 @@ const Links=[
     background-color: #ffffff55;
     backdrop-filter: blur(5px);
     z-index: 1001;
+}
+.bg-enter-active,.bg-leave-active {
+    transition: opacity 0.5s ease;
+}
+.bg-enter-from,.bg-leave-to {
+    opacity: 0;
+}
+.menu-enter-active,.menu-leave-active {
+    transition: transform .5s,box-shadow .5s;
+}
+.menu-enter-from,.menu-leave-to {
+    transform: translateX(-200px);
+    box-shadow: 0 0 50px #0000;
 }
 </style>

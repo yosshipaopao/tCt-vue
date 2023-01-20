@@ -53,12 +53,4 @@ onAuthStateChanged(auth, user => {
     button_disable.value = false;
 });
 </script>
-<template>
-    <div class="signin">
-        <h2>Sign in</h2>
-        <button :disabled="button_disable" @click="toggleSignIn">{{ msg }}</button>
-        <p>user:{{ name }}<br>email:{{ email }}<br></p>
-    </div>
-</template>
-<style scoped>
-</style>
+<template></template>

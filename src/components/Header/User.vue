@@ -1,12 +1,7 @@
 <script setup>
 import {ref} from 'vue';
 const view = ref(false);
-document.addEventListener('click',e=>{if(e.target.closest('.User')){
-    view.value=true;
-}else{
-    view.value=false;
-}
-});
+document.addEventListener('click',e=>view.value=Boolean(e.target.closest('.User')));
 </script>
 <template>
     <div class="User">
