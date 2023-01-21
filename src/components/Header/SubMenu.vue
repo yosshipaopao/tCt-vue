@@ -40,9 +40,9 @@ const Links=[
     position: fixed;
     top: 0;
     bottom: 0;
-    width: 200px;
+    width: 300px;
     left: 0px;
-    background-color: aqua;
+    background-color: rgba(var(--color-accent1),var(--opacity));
     z-index: 1002;
     padding-top:200px;
     box-shadow: 0 0 50px #000f;
@@ -57,7 +57,8 @@ const Links=[
             height:50px;
             margin:5px 0;
             margin-left:10%;
-            background:#f68;
+            background:rgba(var(--color-accent2),var(--opacity));
+            border-radius: var(--header-button-radius);
             @include middle;
         }
     }
@@ -78,7 +79,7 @@ const Links=[
     transition: transform .5s,box-shadow .5s;
 }
 .menu-enter-from,.menu-leave-to {
-    transform: translateX(-200px);
+    transform: translateX(-300px);
     box-shadow: 0 0 50px #0000;
 }
 </style>

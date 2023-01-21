@@ -1,0 +1,6 @@
+body{
+    background-color: rgb(var(--color-bg-fake));
+}
+*{
+    color:#fff;
+}

@@ -23,24 +23,27 @@ const HeaderStore = useHeaderSotre();
     @import '@/assets/mixin.scss';
     header{
         position: fixed;
-        top: 0;
+        top: var(--header-top);
         bottom: calc(100vh - var(--header-high));
-        left: 0;
-        right: 0;
+        left: var(--side-len);
+        right: var(--side-len);
+        border-radius:var(--header-radius);
+        background:rgba(var(--color-main),var(--opacity));
         display: flex;
         flex-direction: row;
-        background-color: antiquewhite;
-        padding-right: 200px;
+        padding-right: var(--header-user-width);
         z-index: 1000;
-    }
-    .menuIcon{
-        height: 100%;
-        aspect-ratio: 1/1;
-        background-color: aliceblue;
-        @include middle;
-        svg{
-            height: 50%;
-            width: 50%;
+        .menuIcon{
+            height: 100%;
+            aspect-ratio: 1/1;
+            border-radius: var(--header-radius);
+            background-color: rgba(var(--color-accent1),var(--opacity));
+            @include middle;
+            svg{
+                height: 50%;
+                width: 50%;
+                stroke:rgb(var(--color-bg));
+            }
         }
     }
 </style>

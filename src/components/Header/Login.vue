@@ -60,3 +60,8 @@ onAuthStateChanged(auth, user => {
         <p>user:{{ name }}<br>email:{{ email }}<br></p>
     </div>
 </template>
+<style scoped>
+    *{
+        color:rgb(var(--color-bg));
+    }
+</style>

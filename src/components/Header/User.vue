@@ -24,10 +24,14 @@ document.addEventListener('click',e=>view.value=Boolean(e.target.closest('.User'
     position: absolute;
     top:0;
     right: 0;
-    width: 300px;
+    width: var(--header-user-width);
     height: v-bind("view?'300px':'100%'");
+    border-top-left-radius: calc(var(--header-radius) / 2);
+    border-bottom-left-radius: calc(var(--header-radius) / 2);
+    border-top-right-radius: var(--header-radius);
+    border-bottom-right-radius: var(--header-radius);
     transition: height .5s ease;
-    background-color: aquamarine;
+    background-color: rgba(var(--color-bg-inverse),var(--opacity));
     overflow:hidden;
     display: flex;
     flex-direction: column;
@@ -35,14 +39,17 @@ document.addEventListener('click',e=>view.value=Boolean(e.target.closest('.User'
     .minmsg{
         @include middle;
         width:100%;
-        height:var(--header-high);
-        background:#00f;
+        height:calc(var(--header-high) - var(--header-top));
+        background: rgba(var(--color-accent1),var(--opacity));
         flex-shrink: 0;
     }
     .detail{
-        background:#0ff;
         width:100%;
-        height: calc( 300px - 10vh );
+        height: calc( 300px - var(--header-high));
+        color:rgba(var(--color-bg),var(--opacity));
+        *{
+            color:rgb(var(--color-bg));
+        }
     }
 }
 </style>

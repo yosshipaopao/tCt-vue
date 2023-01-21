@@ -5,12 +5,18 @@ import Header from '@/views/Header.vue'
 
 <template>
   <Header/>
-  <div class="headerspace"></div>
-  <RouterView />
+  <main>
+    <RouterView />
+  </main>
 </template>
 
 <style scoped>
-.headerspace{
-  height: var(--header-high);
+main{
+    margin:calc(var(--header-high) + 50px) 50px var(--side-len) ;
+    min-height: calc(100vh - var(--header-high) - 100px);
+    border-radius:var(--radius);
+    padding:calc(var(--radius) / 2);
+    word-break: break-word;
+    background:rgb(var(--color-bg));
 }
 </style>

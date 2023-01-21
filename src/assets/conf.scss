@@ -1,0 +1,46 @@
+@function hexToRGB($hex) {
+    @return red($hex), green($hex), blue($hex);
+  }
+  $light: (
+    bg:#0C0C0D,
+    bg-inverse:#f3f3f2,
+    bg-fake:#13005A,
+    main:#3E428C,
+    accent1:#F2B705,
+    accent2:#A904BF,
+  );
+  
+  $dark: (
+    bg:#0C0C0D,
+    bg-inverse:#f3f3f2,
+    bg-fake:#13005A,
+    main:#3E428C,
+    accent1:#F2B705,
+    accent2:#A904BF,
+  );
+
+  :root {
+    @each $key, $color in $light {
+        --color-#{$key}: #{hexToRGB($color)};
+      }
+  
+    &[data-theme='dark'] {
+      @each $key, $color in $dark {
+        --color-#{$key}: #{hexToRGB($color)};
+      }
+    }
+    --opacity:.75;
+  }
+
+:root{
+    --side-len: 50px;
+    --radius: 30px;
+}
+:root{
+    --header-top:20px;
+    --header-high: 110px;
+    --header-radius: var(--radius);
+    --header-button-radius: 10px;
+    --header-user-width: 300px;
+    --header-opacity:var(--opacity);
+}
