@@ -33,7 +33,6 @@ const toggleSignIn = () => {
     } else {
         signOut(auth);
     }
-    //
 }
 onAuthStateChanged(auth, user => {
     if (user) {
@@ -41,7 +40,8 @@ onAuthStateChanged(auth, user => {
             islogined:true,
             name: user.displayName,
             email: user.email,
-            token: user.accessToken
+            token: user.accessToken,
+            pic:user.photoURL,
         });
         msg.value = "logout";
     } else {
@@ -54,11 +54,4 @@ onAuthStateChanged(auth, user => {
 });
 </script>
 <template>
-    <div class="signin">
-        <h2>Sign in</h2>
-        <button :disabled="button_disable" @click="toggleSignIn">{{ msg }}</button>
-        <p>user:{{ name }}<br>email:{{ email }}<br></p>
-    </div>
 </template>
-<style scoped>
-</style>

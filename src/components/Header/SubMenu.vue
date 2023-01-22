@@ -42,6 +42,7 @@ const Links=[
     bottom: 0;
     width: 300px;
     left: 0px;
+    padding-right: 10px;
     background-color: rgba(var(--color-accent1),var(--opacity));
     z-index: 1002;
     padding-top:200px;

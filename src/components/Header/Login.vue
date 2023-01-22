@@ -37,11 +37,13 @@ const toggleSignIn = () => {
 }
 onAuthStateChanged(auth, user => {
     if (user) {
+        console.log(user);
         Userstore.addUser({
             islogined:true,
             name: user.displayName,
             email: user.email,
-            token: user.accessToken
+            token: user.accessToken,
+            pic:user.photoURL,
         });
         msg.value = "logout";
     } else {

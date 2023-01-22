@@ -4,7 +4,8 @@ export const useUsersSotre = defineStore('users', {
         islogined:false,
         name:null,
         email:null,
-        token:null
+        token:null,
+        pic:null,
     }),
     actions:{
         addUser(data){
@@ -13,11 +14,13 @@ export const useUsersSotre = defineStore('users', {
                 this.name=data.name;
                 this.email=data.email;
                 this.token=data.token;
+                this.pic=data.pic;
             }else{
                 this.islogined=data.islogined;
                 this.name=null;
                 this.email=null;
                 this.token=null;
+                this.pic=null;
             }
         }
     }
