@@ -19,6 +19,9 @@ const Links=[
     },{
         path:"/login",
         name:"login"
+    },{
+        path:"/test",
+        name:"test"
     }
 ]
 </script>
