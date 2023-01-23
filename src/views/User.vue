@@ -1,7 +1,6 @@
 <script setup>
-import { ref } from "vue"
 import { useUsersSotre } from '@/stores/user'
-const { name, email, token, addUser } = useUsersSotre();
+const { name, email, token } = useUsersSotre();
 </script>
 <template>
     <div>
