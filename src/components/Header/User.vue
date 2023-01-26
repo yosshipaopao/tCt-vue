@@ -60,7 +60,7 @@ onAuthStateChanged(auth, async (user) => {
         msg.value = "logout";
         if (!await api.user_exists(user.uid)){
             router.push({ path: 'setting' });
-        }
+        }   
     } else {
         Userstore.addUser({
             islogined:false,
