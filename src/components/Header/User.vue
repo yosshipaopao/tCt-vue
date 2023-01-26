@@ -9,8 +9,10 @@ import {useUsersSotre} from '@/stores/user'
 import { firebaseApp } from '@/plugins/firebase';
 import { getAuth, signInWithPopup, signOut, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
 
+import api from '@/plugins/api'
+
 const Userstore = useUsersSotre();
-const { islogined,name,email,token,pic }= storeToRefs(Userstore);
+const { islogined,name,email,token,pic,uid }= storeToRefs(Userstore);
 const view = ref(false);
 document.addEventListener('click',e=>view.value=islogined.value?Boolean(e.target.closest('.User')):false);
 
@@ -44,17 +46,20 @@ const toggleSignIn = () => {
         msg = "LOGIN";
     }
 }
-onAuthStateChanged(auth, user => {
+onAuthStateChanged(auth, async (user) => {
     if (user) {
-        console.log(user);
         Userstore.addUser({
             islogined:true,
             name: user.displayName,
             email: user.email,
             token: user.accessToken,
-            pic:user.photoURL,
+            pic: user.photoURL,
+            uid: user.uid,
         });
         msg.value = "logout";
+        if (!await api.user_exists(user.uid)){
+            router.push({ path: 'setting' });
+        }
     } else {
         Userstore.addUser({
             islogined:false,
