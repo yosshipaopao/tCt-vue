@@ -4,14 +4,14 @@ import router from '@/router'
 import api from "@/plugins/api"
 import {storeToRefs} from 'pinia'
 import {useUsersSotre} from '@/stores/user'
-const {uid} = storeToRefs(useUsersSotre());
+const {islogined,uid} = storeToRefs(useUsersSotre());
 const loading = ref(true);
-(async()=>{if(await api.user_exists(uid.value)){
+if(islogined){
     loading.value=false;
 }else{
     alert("ログインしていません");
-    router.push({path:'/'});
-}})();
+    router.push({path:'/'});    
+}
 </script>
 <template>
     <div class="loading" v-if="loading"></div>

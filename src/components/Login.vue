@@ -5,7 +5,7 @@ import {useUsersSotre} from '@/stores/user'
 import { firebaseApp } from '@/plugins/firebase';
 import { getAuth, signInWithPopup, signOut, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
 const Userstore = useUsersSotre();
-const { name,email,token }= storeToRefs(Userstore);
+const { name,email,idtoken }= storeToRefs(Userstore);
 const auth = getAuth(firebaseApp);
 const provider = new GoogleAuthProvider();
 let button_disable = ref(false);
@@ -40,7 +40,7 @@ onAuthStateChanged(auth, user => {
             islogined:true,
             name: user.displayName,
             email: user.email,
-            token: user.accessToken,
+            idtoken: user.accesstoken,
             pic:user.photoURL,
         });
         msg.value = "logout";

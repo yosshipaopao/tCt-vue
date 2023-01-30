@@ -14,19 +14,16 @@ const router = createRouter({
       name: 'about',
       component: () => import('../views/AboutView.vue')
     },
-    
     {
       path: '/login',
       name: 'Login',
       component: () => import('@/views/Login.vue')
     },
-    
     {
       path: '/user',
       name: 'User',
       component: () => import('@/views/User.vue')
     },
-
     {
       path: '/test',
       name: 'Test',
@@ -36,6 +33,11 @@ const router = createRouter({
         path:"/setting",
         name:"setting",
         component:()=>import("@/views/setting.vue")
+    },
+    {
+        path:'/chat/:id',
+        name: 'chat',
+        component: ()=> import("@/views/chat.vue"),
     }
   ]
 })

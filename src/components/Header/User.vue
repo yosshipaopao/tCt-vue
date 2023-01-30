@@ -1,6 +1,6 @@
 <script setup>
 import {ref} from 'vue';
-import router from "@/router"
+import {useRouter} from "vue-router"
 
 import GoogleIcon from '@/components/icons/google.vue';
 
@@ -12,21 +12,23 @@ import { getAuth, signInWithPopup, signOut, GoogleAuthProvider, onAuthStateChang
 
 import api from '@/plugins/api'
 
+const router = useRouter();
+
 const Userstore = useUsersSotre();
-const { islogined,name,email,token,pic,uid }= storeToRefs(Userstore);
+const { islogined,name,email,idtoken,pic,uid }= storeToRefs(Userstore);
 const view = ref(false);
 document.addEventListener('click',e=>view.value=islogined.value?Boolean(e.target.closest('.User')):false);
 
 const auth = getAuth(firebaseApp);
 const provider = new GoogleAuthProvider();
-let button_disable = ref(false);
-let msg = ref("login")
+const button_disable = ref(false);
+const msg = ref("login");
 
 const toggleSignIn = () => {
     button_disable.value = true;
     if (!auth.currentUser) {
         signInWithPopup(auth, provider).then(function (res) {
-            msg = "SignOut";
+            msg.value = "SignOut";
         }).catch(function (e) {
             switch (e.code) {
                 case 'auth/cancelled-popup-request':
@@ -44,7 +46,7 @@ const toggleSignIn = () => {
     } else {
         signOut(auth);
         button_disable.value = false;
-        msg = "LOGIN";
+        msg.value = "LOGIN";
     }
 }
 onAuthStateChanged(auth, async (user) => {
@@ -53,14 +55,14 @@ onAuthStateChanged(auth, async (user) => {
             islogined:true,
             name: user.displayName,
             email: user.email,
-            token: user.accessToken,
+            idtoken: user.accessToken,
             pic: user.photoURL,
             uid: user.uid,
         });
         msg.value = "logout";
         if (!await api.user_exists(user.uid)){
             router.push({ path: 'setting' });
-        }   
+        }
     } else {
         Userstore.addUser({
             islogined:false,
