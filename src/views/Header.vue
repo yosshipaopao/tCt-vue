@@ -23,10 +23,10 @@ const HeaderStore = useHeaderSotre();
     @import '@/assets/mixin.scss';
     header{
         position: fixed;
-        top: var(--header-top);
-        bottom: calc(100vh - var(--header-high));
-        left: var(--side-len);
-        right: var(--side-len);
+        top: 0;
+        left: 0;
+        right: 0;
+        height:var(--header-high);
         border-radius:var(--header-radius);
         background:rgba(var(--color-main),var(--opacity));
         display: flex;

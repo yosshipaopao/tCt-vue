@@ -107,7 +107,7 @@ onAuthStateChanged(auth, async (user) => {
     .minmsg{
         @include middle;
         width:100%;
-        height:calc(var(--header-high) - var(--header-top));
+        height:var(--header-high);
         background: rgba(var(--color-accent1),var(--opacity));
         flex-shrink: 0;
         img{

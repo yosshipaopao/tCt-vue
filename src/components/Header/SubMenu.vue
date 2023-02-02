@@ -22,6 +22,9 @@ const Links=[
     },{
         path:"/test",
         name:"test"
+    },{
+        path:"/chat",
+        name:"chat"
     }
 ]
 </script>
