@@ -18,12 +18,16 @@ const update_token = async()=>{
     json.value = response;
     Userstore.update_token(response.token);
 }
+const getalldata = async()=>{
+    json.value = await api.chat.getalldata(token.value);
+}
 </script>
 <template>
-    <p>{{ uid }}</p>
+    <input v-model="token"/><br/>
     <button @click="test">user_exists</button><br/>
     <button @click="add_user">add_user</button><br/>
     <button @click="update_token">update_token</button><br/>
+    <button @click="getalldata">getalldata</button><br/>
     <h4>{{JSON.stringify(json)}}</h4>
     <h5>{{token}}</h5>
 </template>

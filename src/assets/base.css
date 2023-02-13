@@ -1,6 +1,14 @@
-body{
+body {
     background-color: rgb(var(--color-bg-fake));
 }
-*{
-    color:#fff;
+
+* {
+    color: #fff;
+    -ms-overflow-style: none;
+    /*Firefoxへの対応*/
+    scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+    display: none;
 }
